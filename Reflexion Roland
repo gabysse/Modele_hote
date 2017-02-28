@@ -1,0 +1,44 @@
+17/02
+
+	Fichier What_is_dir :
+Pour l'instant c'est pas forcément ultra utile car on devrait pouvoir s'y retrouver sans soucis, mais plus tard on aura peut-être des dossiers un peu complexes ou on pourrait avoir besoin que ce dossier puisse être compris par d'autres personnes que nous. Si tu trouve l'idée totalement inutile, on peut la virer évidemment :p
+
+
+	Fichier What_is_new
+J'en ai fait un pour chacun de nous histoire qu'on écrase pas celui de l'autre par inadvertance si jamais on a fait des modifications en parallèle.
+Bien qu'on puisse l'organiser comme on veut vu qu'on en a un chacun, ça peut surement être pas mal d'avoir ça sous forme assez rapide (sans blabla qui divague) histoire que ce soit clair et qu'on ait un rendu comme les listing des différentes versions d'un programme/gros document.
+
+	Fichier Reflexion :
+Là par contre, c'est fait pour qu'on puisse divaguer. 
+L'idée étant que ça peut être pas mal de noter les idées qu'on a, qui peuvent parfois nous venir et repartir le lendemain aussi rapidement si jamais on les a pas mis à l'écrit.
+On peut aussi donner plus de détails sur un truc qu'on a fait, expliquer pourquoi on l'a fait, les modifications qu'on voudrait faire, donner son avis sur une point donné ... bref, j'espère que ce dossier et celui "what_is_new" nous éviterons de devoir nous consulter non stop pour savoir ce qui a été fait par l'autre et que ça nous permettra de garder une trace de ce qui a été fait et de ce qu'on avait pour idée de faire.
+
+	S'y retrouver dans les fichiers text
+ça peut-être pas mal qu'on date toujours de la même manière histoire qu'on ait pas à chercher 50 ans là où commencent les "nouvelles" modifications faites par l'autre dans ses fichiers what_is_new et reflexion.
+Perso ce sera de type jour/mois, ça bloque pas sur le ctrl+F de gedit donc ça devrait passer sur les autres éditeurs.
+
+	Scripts paramètres :
+J'ai pas rentré les valeurs de paramètres initiaux pour le moment, j'ai préféré les mettres tous en forme pour l'instant.
+
+	Script Boots :
+C'est simplement pour avoir le squelette.
+Il y a évidemment encore masse de boulot avant que ce soit fonctionnel et automatisé :
+- il faut mettre la fonction d'appel (mais pour que ça serve, faut avoir des valeurs de "sous-paramètres" pour tous nos paramètres appelés)
+- il faut faire la fonction créatrice de système de jeux d'équations
+- il faut réussir à l'implémenter correctement dans notre fonction de résolution numérique
+- il faut ajouter les matrices de stockage des données (pour les X, Y, h à l'équilibre pour chaques itérations
+- et surement pas mal d'autres petites choses que j'ai pas en tête tout de suite.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+Dossier principal pour notre/nos modèles.
+
+Sous-dossier/fichiers :
+Un dossier paramètres pour les piocher dedans
+
+Un dossier core avec entre autre le programme qui va assembler ces paramètres et le scrip qui y fera appel puis fera la résolution numérique
+
+Un fichier "What_is_new" récapitulant les avancées du dossier pour qu'on puisse être au courant de ce qu'à fait l'autre ^^

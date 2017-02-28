@@ -1,0 +1,11 @@
+hote_h <- function(t,pop , param_k){
+  
+  with(as.list(param_k), {return(list(c(
+dX_1<- ak[1]*pop[1] - qk[1]*sum(pop)*pop[1] - bk[1]*pop[1] - betak[1]*pop[1]*sum(pop[2*1:7])+ gammak[1]*pop[2], dY_1<- betak[1]*pop[1]*sum(pop[2*1:7])- (alphak[1]+bk[1]+gammak[1])*pop[2],
+dX_2<- ak[2]*pop[3] - qk[2]*sum(pop)*pop[3] - bk[2]*pop[3] - betak[2]*pop[3]*sum(pop[2*1:7])+ gammak[2]*pop[4], dY_2<- betak[2]*pop[3]*sum(pop[2*1:7])- (alphak[2]+bk[2]+gammak[2])*pop[4],
+dX_3<- ak[3]*pop[5] - qk[3]*sum(pop)*pop[5] - bk[3]*pop[5] - betak[3]*pop[5]*sum(pop[2*1:7])+ gammak[3]*pop[6], dY_3<- betak[3]*pop[5]*sum(pop[2*1:7])- (alphak[3]+bk[3]+gammak[3])*pop[6],
+dX_4<- ak[4]*pop[7] - qk[4]*sum(pop)*pop[7] - bk[4]*pop[7] - betak[4]*pop[7]*sum(pop[2*1:7])+ gammak[4]*pop[8], dY_4<- betak[4]*pop[7]*sum(pop[2*1:7])- (alphak[4]+bk[4]+gammak[4])*pop[8],
+dX_5<- ak[5]*pop[9] - qk[5]*sum(pop)*pop[9] - bk[5]*pop[9] - betak[5]*pop[9]*sum(pop[2*1:7])+ gammak[5]*pop[10], dY_5<- betak[5]*pop[9]*sum(pop[2*1:7])- (alphak[5]+bk[5]+gammak[5])*pop[10],
+dX_6<- ak[6]*pop[11] - qk[6]*sum(pop)*pop[11] - bk[6]*pop[11] - betak[6]*pop[11]*sum(pop[2*1:7])+ gammak[6]*pop[12], dY_6<- betak[6]*pop[11]*sum(pop[2*1:7])- (alphak[6]+bk[6]+gammak[6])*pop[12],
+dX_7<- ak[7]*pop[13] - qk[7]*sum(pop)*pop[13] - bk[7]*pop[13] - betak[7]*pop[13]*sum(pop[2*1:7])+ gammak[7]*pop[14], dY_7<- betak[7]*pop[13]*sum(pop[2*1:7])- (alphak[7]+bk[7]+gammak[7])*pop[14]
+)))})}

@@ -1,0 +1,5 @@
+21/02
+
+-Lors de l'analyse d'arrivée d'un mutant, il peut être de bon aloi de vérifier par rapport à la souche initiale vers quel côté le mutant va être sélectionné : pour km>kr ou l'inverse ? Ainsi, une fois qu'on sait ça, on peut 'orienter' les mutations pour éviter les mutations qui disparaîtront de toute façon (les tentatives de rollback évolutif, en somme).
+
+	=> Ne semble pas forcément être une bonne idée, car possibilité de stabilité locale non-globale
