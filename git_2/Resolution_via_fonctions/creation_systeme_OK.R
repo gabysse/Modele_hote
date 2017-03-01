@@ -3,6 +3,10 @@
 # Creation du jeu d'equation
 # Attention, il faut remplacer les ak et autres par leurs expressions pour i 
 
+### INITIALISATION ###
+n<-15
+######################
+
 equa_diff <- function(i,imax){
   towrite <- paste("dX_",i,"<- param_k$ak[",i,"]*pop[",i*2-1,"] - param_k$qk[",i,"]*sum(pop)*pop[",i*2-1,"] - param_k$bk[",i,"]*pop[",i*2-1,"] - param_k$betak[",i,"]*pop[",i*2-1,"]*sum(pop[2*1:",imax,"])+ param_k$gammak[",i,"]*pop[",i*2,"], dY_",i,"<- param_k$betak[",i,"]*pop[",i*2-1,"]*sum(pop[2*1:",imax,"])- (param_k$alphak[",i,"]+param_k$bk[",i,"]+param_k$gammak[",i,"])*pop[",i*2,"],", sep="")
   return(towrite)
@@ -14,7 +18,7 @@ equa_diff_fin <- function(i,imax){
 }
 
 #Creation du fichier
-n<-15
+
 for(c in 1:n){
   # test d'existence du fichier ; s'il existe, on le supprime. 
   if(file.exists(paste("data_", c, sep=""))){file.remove(paste("data_", c, sep=""))}
