@@ -4,7 +4,7 @@
 # Attention, il faut remplacer les ak et autres par leurs expressions pour i 
 
 ### INITIALISATION ###
-n<-15
+n<-(1/variationk)+1
 ######################
 
 equa_diff <- function(i,imax){

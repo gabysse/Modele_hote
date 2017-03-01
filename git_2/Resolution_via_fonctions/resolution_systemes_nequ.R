@@ -3,7 +3,7 @@ resolution_systemes_nequ=function(param_k,X,Y){
 	##### INITIALISATION #####
   resolmax=200
 times <- c(0,seq(resolmax-1,resolmax,0.1))
-zero <- 1e-4	
+zero <- 1e-7	
 compteurtourmax <- 10
 times_cycle_sup <- c(resolmax,seq(resolmax*2-1,resolmax*2,0.1))
 

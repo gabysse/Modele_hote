@@ -1,30 +1,31 @@
 rm(list=ls())
-setwd("/home/gollivier/Documents/Modeles_hotes/git/Modele_hote/Resolution_via_fonctions/sys_equations")
-source("../creation_systeme_OK.R")
-setwd("/home/gollivier/Documents/Modeles_hotes/git/Modele_hote/Resolution_via_fonctions")
 
-##### INITIALISATION #####
-k=0.1 #Valeur d'un k initial
-X=1   #Densité de susceptibles initiale
-Y=0.2 #Densité d'infectés initiale
+
+###### INITIALISATION ######
+k=0.9 #Valeur d'un k initial
+X=1   #Densite de susceptibles initiale
+Y=0.2 #Densite d'infectes initiale
 variationk=0.01
-nbmutant=20 #Nb totale de mutations effectuées (-1)
+nbmutant=20 #Nb totale de mutations effectuees (-1)
 pourcentpopmutantX=0.1
 pourcentpopmutantY=0.1
 Xfinal=matrix(0 , nrow = 1/variationk, ncol = nbmutant)
 Yfinal=matrix(0 , nrow = 1/variationk, ncol = nbmutant)
 ############################
+setwd("sys_equations")
+source("../creation_systeme_OK.R")
+setwd("../")
 
 for(mut in 1:nbmutant){
-          #On définit les paramètres des souches en présence#
+          #On definit les parametres des souches en presence#
   source("fonction_parametres.R")
   param_k=func_param(k)
   
-          #On résoud le système#
+          #On resoud le systeme#
   source("resolution_systemes_nequ.R")
   resolution=resolution_systemes_nequ(param_k,X,Y)
   
-  #Là, on a des 0 si proche de 0, donc on peut savoir si on a disparition et stocker tout ça dans les matrices Xfinal et Yfinal
+  #La, on a des 0 si proche de 0, donc on peut savoir si on a disparition et stocker tout ca dans les matrices Xfinal et Yfinal
   for(i in 1:(length(resolution)/2)){
     Xfinal[k[i]*(1/variationk),mut]=resolution[-1+2*i]
     Yfinal[k[i]*(1/variationk),mut]=resolution[2*i]
@@ -34,24 +35,28 @@ for(mut in 1:nbmutant){
   k_inter=NULL
   X_inter=NULL
   Y_inter=NULL
-  for(j in 1:(length(resolution)/2)){
+  for(j in 1:(length(resolution)/2)){ #On recupere les couples resolution[1,2], puis resolution[3,4], etc..., qui representent les valeurs de X et Y pour une souche en particulier.
     if(resolution[2*j]+resolution[2*j-1]>0){
       k_inter=c(k_inter,k[j])
       X_inter=c(X_inter,resolution[2*j-1])
       Y_inter=c(Y_inter,resolution[2*j])
+    }
+    if(resolution[2*j]==0 && resolution[2*j-1]>0){#On a ici extinction du parasite et donc equilibre non-trivial (pas trop d'interet)
+       print("Disparition du parasite")
     }
   }
   #Puis on remplace les vecteurs
   k=k_inter ; X=X_inter ; Y=Y_inter
   
   #On va ajouter le mutant
-  vecmutant=(X+Y)/sum(X+Y)#vecteur de proba de muter en fonction de la densité relative de la population
+  vecmutant=(X+Y)/sum(X+Y)#vecteur de proba de muter en fonction de la densite relative de la population
   signe=sample(c(-1,1),1)
   kmutant=sample(k,1,prob=vecmutant)+signe*(variationk)
   Xmutant=sum(X)*pourcentpopmutantX
   Ymutant=sum(Y)*pourcentpopmutantY
   #print(kmutant)
-  #Et on fusionne ça
+  #Et on fusionne ca
   k=c(k,kmutant) ; X=c(X,Xmutant) ; Y=c(Y,Ymutant)
   #print(mut)
 }
+image(Xfinal)
