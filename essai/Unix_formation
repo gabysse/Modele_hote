@@ -1,0 +1,85 @@
+Formation UNIXX
+
+copier / coller : 
+sélection ==> automatiquement copier
+clic molette ==> coller
+
+complétion : 
+Tab après qq caractères
+double tab ==> options qui restent
+
+commande précédente :
+Flèche du haut donne la commande précédente
+ctrl + r ==> après avoir taper qqlettre il trouve la commande qui semble correspondre au début (comme complétion)
+ctrl +r deux fois ==> relance la recherche
+
+
+Se déplacer dans l'arborescence :
+/ ==> racine "/"
+~ ==> répertoire home de l'utilisateur
+. ==> répertoire courant
+.. ==> répertoire parent
+pwd ==> indique le chemin du répertoire courant
+
+Chemin relatif :
+remonter plus loin que parent : ../../ etc
+
+Fonction ls : liste les fichier et les répertoires dans le répertoire courant
+-a all liste aussi les fichiers cachés
+-1 1 pour avoir une colonne
+-F différencie les répertoires / et les executables *
+	car ya pas besoin d'extensions sur linux...
+-l long  pour avoir plus d'informations
+ex : "ls -a"
+
+Pour se connecter à un ordi distant : (ici, pour la formation)
+ssh login@adresseduserveur
+ici: ssh guest@10.3.0.6
+
+Le système de permission :
+listé avec -l
+première lettre = type de fichier (d = dossier ; rien = fichier)
+Puis, 3 triplets :
+	Utilisateur
+	Groupe
+	Autres
+r --> droits de lectuer
+w --> droits d'écriture
+x --> droits d'exécution
+Ya aussi un système de chiffre qui permet de retranscrire les triplets plus rapidement
+
+--- 0
+--x 1
+-w- 2
+-wx 3
+r-- 4
+r-x 5
+rw- 6
+rwx 7
+
+Modifier les permissions : 
+ex : 
+chmod mode file1
+chmodd 755 BDD-COI.txt
+sudo chmodd 755 BDD-COI.txt (en mode superuser)
+
+chmod +x toto.jpg --> rajoute le droit d'exécution à tous les triplets (donc à tous)
+
+
+
+Manipuler des fichiers :
+mkdir dir_name création fichier
+rmdir          suppression
+touch          création d'un fichier
+rm             suppression d'un fichier
+cp     source destination   copie d'un fichier
+cp -r  source destination   copie d'un répertoire
+
+mv file_name existing_dir_name 		déplacer un fichier
+mv old new 	renommer
+
+tail -F nomfichier  --> ça afficher les dernières lignes de l'exécution à chaque fois donc on peut voir où ça bloque
+
+
+
+
