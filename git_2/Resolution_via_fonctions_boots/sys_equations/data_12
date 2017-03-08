@@ -1,0 +1,16 @@
+hote_h <- function(t,pop , param_k){
+  
+  with(as.list(param_k), {return(list(c(
+dX_1<- param_k$ak[1]*pop[1] - param_k$qk[1]*sum(pop)*pop[1] - param_k$bk[1]*pop[1] - param_k$betak[1]*pop[1]*sum(pop[2*1:12])+ param_k$gammak[1]*pop[2], dY_1<- param_k$betak[1]*pop[1]*sum(pop[2*1:12])- (param_k$alphak[1]+param_k$bk[1]+param_k$gammak[1])*pop[2],
+dX_2<- param_k$ak[2]*pop[3] - param_k$qk[2]*sum(pop)*pop[3] - param_k$bk[2]*pop[3] - param_k$betak[2]*pop[3]*sum(pop[2*1:12])+ param_k$gammak[2]*pop[4], dY_2<- param_k$betak[2]*pop[3]*sum(pop[2*1:12])- (param_k$alphak[2]+param_k$bk[2]+param_k$gammak[2])*pop[4],
+dX_3<- param_k$ak[3]*pop[5] - param_k$qk[3]*sum(pop)*pop[5] - param_k$bk[3]*pop[5] - param_k$betak[3]*pop[5]*sum(pop[2*1:12])+ param_k$gammak[3]*pop[6], dY_3<- param_k$betak[3]*pop[5]*sum(pop[2*1:12])- (param_k$alphak[3]+param_k$bk[3]+param_k$gammak[3])*pop[6],
+dX_4<- param_k$ak[4]*pop[7] - param_k$qk[4]*sum(pop)*pop[7] - param_k$bk[4]*pop[7] - param_k$betak[4]*pop[7]*sum(pop[2*1:12])+ param_k$gammak[4]*pop[8], dY_4<- param_k$betak[4]*pop[7]*sum(pop[2*1:12])- (param_k$alphak[4]+param_k$bk[4]+param_k$gammak[4])*pop[8],
+dX_5<- param_k$ak[5]*pop[9] - param_k$qk[5]*sum(pop)*pop[9] - param_k$bk[5]*pop[9] - param_k$betak[5]*pop[9]*sum(pop[2*1:12])+ param_k$gammak[5]*pop[10], dY_5<- param_k$betak[5]*pop[9]*sum(pop[2*1:12])- (param_k$alphak[5]+param_k$bk[5]+param_k$gammak[5])*pop[10],
+dX_6<- param_k$ak[6]*pop[11] - param_k$qk[6]*sum(pop)*pop[11] - param_k$bk[6]*pop[11] - param_k$betak[6]*pop[11]*sum(pop[2*1:12])+ param_k$gammak[6]*pop[12], dY_6<- param_k$betak[6]*pop[11]*sum(pop[2*1:12])- (param_k$alphak[6]+param_k$bk[6]+param_k$gammak[6])*pop[12],
+dX_7<- param_k$ak[7]*pop[13] - param_k$qk[7]*sum(pop)*pop[13] - param_k$bk[7]*pop[13] - param_k$betak[7]*pop[13]*sum(pop[2*1:12])+ param_k$gammak[7]*pop[14], dY_7<- param_k$betak[7]*pop[13]*sum(pop[2*1:12])- (param_k$alphak[7]+param_k$bk[7]+param_k$gammak[7])*pop[14],
+dX_8<- param_k$ak[8]*pop[15] - param_k$qk[8]*sum(pop)*pop[15] - param_k$bk[8]*pop[15] - param_k$betak[8]*pop[15]*sum(pop[2*1:12])+ param_k$gammak[8]*pop[16], dY_8<- param_k$betak[8]*pop[15]*sum(pop[2*1:12])- (param_k$alphak[8]+param_k$bk[8]+param_k$gammak[8])*pop[16],
+dX_9<- param_k$ak[9]*pop[17] - param_k$qk[9]*sum(pop)*pop[17] - param_k$bk[9]*pop[17] - param_k$betak[9]*pop[17]*sum(pop[2*1:12])+ param_k$gammak[9]*pop[18], dY_9<- param_k$betak[9]*pop[17]*sum(pop[2*1:12])- (param_k$alphak[9]+param_k$bk[9]+param_k$gammak[9])*pop[18],
+dX_10<- param_k$ak[10]*pop[19] - param_k$qk[10]*sum(pop)*pop[19] - param_k$bk[10]*pop[19] - param_k$betak[10]*pop[19]*sum(pop[2*1:12])+ param_k$gammak[10]*pop[20], dY_10<- param_k$betak[10]*pop[19]*sum(pop[2*1:12])- (param_k$alphak[10]+param_k$bk[10]+param_k$gammak[10])*pop[20],
+dX_11<- param_k$ak[11]*pop[21] - param_k$qk[11]*sum(pop)*pop[21] - param_k$bk[11]*pop[21] - param_k$betak[11]*pop[21]*sum(pop[2*1:12])+ param_k$gammak[11]*pop[22], dY_11<- param_k$betak[11]*pop[21]*sum(pop[2*1:12])- (param_k$alphak[11]+param_k$bk[11]+param_k$gammak[11])*pop[22],
+dX_12<- param_k$ak[12]*pop[23] - param_k$qk[12]*sum(pop)*pop[23] - param_k$bk[12]*pop[23] - param_k$betak[12]*pop[23]*sum(pop[2*1:12])+ param_k$gammak[12]*pop[24], dY_12<- param_k$betak[12]*pop[23]*sum(pop[2*1:12])- (param_k$alphak[12]+param_k$bk[12]+param_k$gammak[12])*pop[24]
+)))})}

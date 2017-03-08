@@ -2,16 +2,17 @@ rm(list=ls())
 library(deSolve)
 
 ###### INITIALISATION ######
-k=0.3 #Valeur d'un k initial
+k=c(0.3,0.7) #Valeur d'un k initial
 kinitial=k #Va servir uniquement en cas d'erreur
-X=10   #Densite de susceptibles initiale
-Y=2 #Densite d'infectes initiale
+X=c(1,1)   #Densite de susceptibles initiale
+Y=c(1,1) #Densite d'infectes initiale
 variationk=0.05
-nbmutant=10 #Nb totale de mutations effectuees (+1)
+nbmutant=30 #Nb totale de mutations effectuees (+1)
 pourcentpopmutantX=0.1
 pourcentpopmutantY=0.1
 Xfinal=matrix(0 , nrow = 1/variationk+1, ncol = nbmutant)
 Yfinal=matrix(0 , nrow = 1/variationk+1, ncol = nbmutant)
+kfinal=rep(0,10)
 ############################
 setwd("sys_equations")
 source("../creation_systeme_OK.R")
@@ -28,8 +29,8 @@ for(mut in 1:nbmutant){
   
   #La, on a des 0 si proche de 0, donc on peut savoir si on a disparition et stocker tout ca dans les matrices Xfinal et Yfinal
   for(i in 1:(length(resolution)/2)){
-    Xfinal[k[i]*(1/variationk),mut]=resolution[-1+2*i]
-    Yfinal[k[i]*(1/variationk),mut]=resolution[2*i]
+    Xfinal[k[i]*(1/variationk),mut]=Xfinal[k[i]*(1/variationk),mut]+resolution[-1+2*i]
+    Yfinal[k[i]*(1/variationk),mut]=Yfinal[k[i]*(1/variationk),mut]+resolution[2*i]
   }
   
   #On supprime les k disparus 
@@ -39,8 +40,15 @@ for(mut in 1:nbmutant){
   for(j in 1:(length(resolution)/2)){ #On recupere les couples resolution[1,2], puis resolution[3,4], etc..., qui representent les valeurs de X et Y pour une souche en particulier.
     if(resolution[2*j]>0 && resolution[2*j-1]>0){
       k_inter=c(k_inter,k[j])
-      X_inter=c(X_inter,resolution[2*j-1])
-      Y_inter=c(Y_inter,resolution[2*j])
+      X_inter=c(X_inter,Xfinal[k[j]*(1/variationk),mut])
+      Y_inter=c(Y_inter,Yfinal[k[j]*(1/variationk),mut])
+    }
+    if(length(k_inter)>1){
+      if(any(as.integer(k_inter[-length(k_inter)]))==as.integer(k_inter[length(k_inter)])) { #On vérifie que les k ne se répètent pas, si c'est le cas on les somme (le if() précédent) et on vire les k et X/Y en trop.
+        k_inter=k_inter[-length(k_inter)]
+        X_inter=X_inter[-length(X_inter)]
+        Y_inter=Y_inter[-length(Y_inter)]
+      }
     }
   }
   if(is.null(X_inter)){#On a ici extinction du parasite et donc equilibre non-trivial 
@@ -49,21 +57,25 @@ for(mut in 1:nbmutant){
   }
   #Puis on remplace les vecteurs
   k=k_inter ; X=X_inter ; Y=Y_inter
-  
+  kfinal=rbind(kfinal,k)
   #On va ajouter le mutant
   vecmutant=(X+Y)/sum(X+Y)#vecteur de proba de muter en fonction de la densite relative de la population
   signe=sample(c(-1,1),1)
-  if(any(k==variationk)){signe=1}
-  if(any(k==(1-variationk))){signe=-1}
+  if(any(as.integer(k[1:length(k)]))==0+variationk){signe=1}
+  if(any(as.integer(k[1:length(k)]))==1){signe=-1} #Pour rester entre 0 et 1
   kmutant=sample(k,1,prob=vecmutant)+signe*(variationk)
   Xmutant=sum(X)*pourcentpopmutantX
   Ymutant=sum(Y)*pourcentpopmutantY
   print(kmutant)
   #Et on fusionne ca
   k=c(k,kmutant) ; X=c(X,Xmutant) ; Y=c(Y,Ymutant)
-  #print(mut)
+  print(mut)
+  
 }
 par(mfrow=c(1,3))
 image(Xfinal+Yfinal)
 image(Xfinal)
 image(Yfinal)
+image(matrix(as.numeric(as.logical(Xfinal+Yfinal)),nrow=1/variationk+1,ncol=nbmutant))
+image(matrix(as.numeric(as.logical(Xfinal)),nrow=1/variationk+1,ncol=nbmutant))
+image(matrix(as.numeric(as.logical(Yfinal)),nrow=1/variationk+1,ncol=nbmutant))

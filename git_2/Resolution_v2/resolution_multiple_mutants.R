@@ -2,12 +2,12 @@ rm(list=ls())
 library(deSolve)
 
 ###### INITIALISATION ######
-k=0.3 #Valeur d'un k initial
+k=0.95 #Valeur d'un k initial
 kinitial=k #Va servir uniquement en cas d'erreur
-X=10   #Densite de susceptibles initiale
-Y=2 #Densite d'infectes initiale
-variationk=0.05
-nbmutant=10 #Nb totale de mutations effectuees (+1)
+X=1   #Densite de susceptibles initiale
+Y=0.2 #Densite d'infectes initiale
+variationk=0.01
+nbmutant=25 #Nb totale de mutations effectuees (+1)
 pourcentpopmutantX=0.1
 pourcentpopmutantY=0.1
 Xfinal=matrix(0 , nrow = 1/variationk+1, ncol = nbmutant)
@@ -18,11 +18,11 @@ source("../creation_systeme_OK.R")
 setwd("../")
 
 for(mut in 1:nbmutant){
-          #On definit les parametres des souches en presence#
+  #On definit les parametres des souches en presence#
   source("fonction_parametres.R")
   param_k=func_param(k)
   
-          #On resoud le systeme#
+  #On resoud le systeme#
   source("resolution_systemes_nequ.R")
   resolution=resolution_systemes_nequ(param_k,X,Y)
   
@@ -58,7 +58,7 @@ for(mut in 1:nbmutant){
   kmutant=sample(k,1,prob=vecmutant)+signe*(variationk)
   Xmutant=sum(X)*pourcentpopmutantX
   Ymutant=sum(Y)*pourcentpopmutantY
-  print(kmutant)
+  #print(kmutant)
   #Et on fusionne ca
   k=c(k,kmutant) ; X=c(X,Xmutant) ; Y=c(Y,Ymutant)
   #print(mut)

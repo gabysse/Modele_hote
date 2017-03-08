@@ -4,8 +4,9 @@ resolution_systemes_nequ=function(param_k,X,Y){
   resolmax=500
 times <- c(0,seq(resolmax-1,resolmax,0.1))
 zero <- 1e-4	
-compteurtourmax <- 15
+compteurtourmax <- 500
 times_cycle_sup <- c(resolmax,seq(resolmax*2-1,resolmax*2,0.1))
+arrondi=4 #Décimale à laquelle la valeur de résolution sera arrondie
 
 
   #On crée le vecteur de valeurs initiales pour la résolution
@@ -38,5 +39,5 @@ times_cycle_sup <- c(resolmax,seq(resolmax*2-1,resolmax*2,0.1))
   
   #Et au final, on renvoie le résultat de notre système, donné par la dernière ligne de "final".
 
-  return(round(final[nrow(final),-1],digits=2))#On arrondi à la deuxième décimale pour avoir des 0 si une équation tends vers 0.
+  return(round(final[nrow(final),-1],digits=arrondi))
 }

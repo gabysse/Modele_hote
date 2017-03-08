@@ -1,0 +1,1 @@
+Disparition du parasite pour k= 0.95 avec les parametres beta= 0.1 alpha= 0.4875 gamma= 0.974679434480896 a= 0.975 b= 0.979743547584717 et q= -4.74354758471751e-05
