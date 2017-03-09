@@ -1,12 +1,12 @@
-resolution_systemes_nequ=function(param_k,X,Y){
+resolution_systemes_nequ=function(param_k,X,Y,nbsouche){
 
 	##### INITIALISATION #####
-  resolmax=200
+  resolmax=1000000
 times <- c(0,seq(resolmax-1,resolmax,0.1))
 #zero <- 1e-4	
 #compteurtourmax <-10
 times_cycle_sup <- c(resolmax,seq(resolmax*2-1,resolmax*2,0.1))
-arrondi=4 #Décimale à laquelle la valeur de résolution sera arrondie
+arrondi=2 #Décimale à laquelle la valeur de résolution sera arrondie
 
 
   #On crée le vecteur de valeurs initiales pour la résolution

@@ -2,14 +2,14 @@ rm(list=ls())
 library(deSolve)
 
 ###### INITIALISATION ######
-k=c(0.7) #Valeur d'un k initial
+k=c(0.4) #Valeur d'un k initial
 kinitial=k #Va servir uniquement en cas d'erreur
 X=c(1)   #Densite de susceptibles initiale
 Y=c(1) #Densite d'infectes initiale
 variationk=0.05
-nbmutant=200 #Nb totale de mutations effectuees (+1)
-pourcentpopmutantX=0.1
-pourcentpopmutantY=0.1
+nbmutant=5 #Nb totale de mutations effectuees (+1)
+pourcentpopmutantX=0.9
+pourcentpopmutantY=0.9
 Xfinal=matrix(0 , nrow = 1/variationk+1, ncol = nbmutant)
 Yfinal=matrix(0 , nrow = 1/variationk+1, ncol = nbmutant)
 kfinal=rep(0,1/variationk)
@@ -37,8 +37,8 @@ for(mut in 1:nbmutant){
       param_k=func_param(k)
       
               #On resoud le systeme#
-      source("resolution_systemes_nequ.R")
-      resolution=resolution_systemes_nequ(param_k,X,Y)
+      source("resolution_systemes_nequ_v2.R")
+      resolution=resolution_systemes_nequ(param_k,X,Y,nbsouche)
       
       #La, on a des 0 si proche de 0, donc on peut savoir si on a disparition et stocker tout ca dans les matrices Xfinal et Yfinal
       for(i in 1:nbsouche){
@@ -108,9 +108,10 @@ for(mut in 1:nbmutant){
   
   vecmutant=(X+Y)/sum(X+Y)#vecteur de proba de muter en fonction de la densite relative de la population
   signe=sample(c(-1,1),1)
-  #if(any(as.integer(k[1:length(k)]))==0+variationk){signe=1}
-  #if(any(as.integer(k[1:length(k)]))==1){signe=-1} #Pour rester entre 0 et 1
-  kmutant=sample(k,1,prob=vecmutant)+signe*(variationk)
+  ktire=sample(k,1,prob=vecmutant)
+  if(ktire<2*variationk){signe=1}
+  if(ktire>1-variationk){signe=-1} #Pour rester entre 0 et 1
+  kmutant=ktire+signe*(variationk)
   Xmutant=sum(X)*pourcentpopmutantX
   Ymutant=sum(Y)*pourcentpopmutantY
   #print(kmutant)
@@ -126,4 +127,3 @@ image(Yfinal)
 image(matrix(as.numeric(as.logical(Xfinal+Yfinal)),nrow=1/variationk+1,ncol=nbmutant))
 image(matrix(as.numeric(as.logical(Xfinal)),nrow=1/variationk+1,ncol=nbmutant))
 image(matrix(as.numeric(as.logical(Yfinal)),nrow=1/variationk+1,ncol=nbmutant))
-image(Yfinal[,190:200])
