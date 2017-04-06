@@ -1,0 +1,4 @@
+Comment lire les résultats issus de run_job_verif.sh / verif_replicats.R ? 
+
+Chaque figure représente les diagrammes de bifurcation pour une valeur de Pa donnée, donc pour une forme d'interaction entre a et k donnée. Chaque point représente la valeur finale de résistance après X mutations au sein de la population pour une valeur de P_param donné (et donc une forme d'interaction entre le paramètre et k). Un triangle souligné par une flèche rouge indique que l'équilibre évolutif n'a pas été atteint selon le critère établi dans verif_replicats.R. Une flèche verte indique qu'il y a une différence entre les réplicats. 
+/!\ : cette différence peut s'expliquer par une/des résistance(s) finale(s) différente(s), mais aussi par des densités de population différentes ! 

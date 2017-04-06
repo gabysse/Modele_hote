@@ -1,0 +1,7 @@
+hote_h <- function(t,pop , param_k){
+  
+  with(as.list(param_k), {return(list(c(
+dX_1<- param_k$ak[1]*pop[1] - param_k$qk[1]*sum(pop)*pop[1] - param_k$bk[1]*pop[1] - param_k$betak[1]*pop[1]*sum(pop[2*1:3])+ param_k$gammak[1]*pop[2], dY_1<- param_k$betak[1]*pop[1]*sum(pop[2*1:3])- (param_k$alphak[1]+param_k$bk[1]+param_k$gammak[1])*pop[2],
+dX_2<- param_k$ak[2]*pop[3] - param_k$qk[2]*sum(pop)*pop[3] - param_k$bk[2]*pop[3] - param_k$betak[2]*pop[3]*sum(pop[2*1:3])+ param_k$gammak[2]*pop[4], dY_2<- param_k$betak[2]*pop[3]*sum(pop[2*1:3])- (param_k$alphak[2]+param_k$bk[2]+param_k$gammak[2])*pop[4],
+dX_3<- param_k$ak[3]*pop[5] - param_k$qk[3]*sum(pop)*pop[5] - param_k$bk[3]*pop[5] - param_k$betak[3]*pop[5]*sum(pop[2*1:3])+ param_k$gammak[3]*pop[6], dY_3<- param_k$betak[3]*pop[5]*sum(pop[2*1:3])- (param_k$alphak[3]+param_k$bk[3]+param_k$gammak[3])*pop[6]
+)))})}

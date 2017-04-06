@@ -1,0 +1,11 @@
+Les differents elements sont a lancer dans un ordre particulier.
+
+Commence par modifier les parametres qui vont bien (alpha/gamma qui deviennent b) dans les fichiers stepbystepgamma ou alpha, qui représentent un réplicat pour un jeu de paramètres donné. Ensuite, faut modifier pareil dans creation_lancement, creation_fichiers et res_poly. verif_replicats aussi, bien sûr, mais ça tu pourras le modifier pendant que le reste tourne. Normalement, rien à modifier dans le dossier boots. 
+
+Ensuite, une fois que tout est paré, voilà le principe. Tu envoie le tout sur le cluster tel quel pour sauvegarder du temps de transfert (tu vas comprendre pourquoi) et là, après avoir mis la WD à la racine du dossier, tu ouvres une session R (commande R du terminal). Là, il va falloir créer les dossiers. Pour se faire, source("creation_fichiers.R"). C'est envoyé sur le noeud maître, mais c'est l'histoire de 10 secondes, on est large dans les clous de ce qui est autorisé ;) Ensuite, source("creation_lancement_b.R") va te créer un fichier .sh qui te servira à lancer chaque job d'un seul coup. 
+
+A ce stade, tout est paré : plus qu'à lancer dans le bon ordre. Tu peux exécuter le script de lancement de b créer juste au dessus (/!\ : pas avec qsub, c'est pas un script de soumission de job mais un script en shell qui lance des scripts de soumission ! Il faut donc le lancer avec sh nom_fichier). En parallèle, tu balances run_job_boots.sh (en qsub cette fois, et attention à modifier ta WD dans le fichier avant de lancer), qui te fait la résolution exactement comme Boots2012(a) et qui va servir pour la création des figures. 
+
+On en est donc à la phase où tout est lancé : reste à attendre. Un fois assez attendu (comprendre quand c'est fini, pas quand tu commence à t'ennuyer, parce que ça peut prendre du temps...), et que tout s'est bien déroulé, on envoie le run_job_verif.sh qui va faire le café. Il vérifie si on est à l'équilibre évolutif, si les réplicats donnent les mêmes résultats, et va synthétiser les résultats dans une figure bien chouette (cf lire_les_resultats).
+
+Voilà ! Bon run !
